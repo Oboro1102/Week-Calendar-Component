@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Week Calendar Component" />
+    <meta name="author" content="ツキノリュウ" />
+    <title>Week Calendar Component</title>
+    <!-- Bootstrap Reboot -->
+    <link href="css/bootstrap-reboot.min.css" rel="stylesheet" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <!-- css gg icon -->
+    <link href='https://css.gg/spinner-alt.css' rel='stylesheet'>
+    <!-- main css -->
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+    <main class="content">
+        <h1 class="content__title">Week Calendar Component</h1>
+        <section class="calendar" v-cloak>
+            <div class="calendar__grid calendar__grid--header" :style="{ paddingRight: scrollbarWidth}">
+                <span class="calendar__grid__day"
+                    :class="{'calendar__grid__day--today' : checkToday(calendarWeek[index])}"
+                    v-for="(day, index) in days" :key="index">
+                    <span>{{ day }}</span>
+                    <span>{{ calendarWeek[index].date }}</span>
+                </span>
+            </div>
+            <div class="calendar__timeline">
+                <div class="calendar__grid">
+                    <div class="calendar__grid__column">
+                        <div class="calendar__grid__column__time" v-for="time in 24" :key="time">
+                            <span>{{ time - 1 }}:00</span>
+                        </div>
+                    </div>
+                    <div class="calendar__grid__column" v-for="column in 7" :key="column">
+                        <div class="calendar__grid__column__currentHour" :style="{ top: computeHourDiff() + '%' }"
+                            v-if="calendarWeek[column - 1].date === today.date"></div>
+                        <div class="calendar__grid__column__cell" v-for="time in 24" :key="time"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!-- Vue Component Code  -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
