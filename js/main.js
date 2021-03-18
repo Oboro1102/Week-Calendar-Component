@@ -87,7 +87,7 @@ const calendar = new Vue({
                 this.today.month - 1,
                 this.today.date,
                 0,
-                
+                0
             );
             const currentTime = new Date();
             let diff = endTime.getTime() - currentTime.getTime();
