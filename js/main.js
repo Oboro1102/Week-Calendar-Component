@@ -24,22 +24,21 @@ const calendar = new Vue({
                 this.today.date
             );
 
-            let computeMonday =
+            let computeSunday =
                 today.getDate() -
-                today.getDay() +
-                (today.getDay() == 0 ? -6 : 1);
+                today.getDay();
 
-            let monday = new Date(
+            let sunday = new Date(
                 this.today.year,
                 this.today.month - 1,
-                computeMonday - 1
+                computeSunday
             );
 
             return {
-                year: monday.getFullYear(),
-                month: monday.getMonth() + 1,
-                date: monday.getDate(),
-                day: monday.getDay(),
+                year: sunday.getFullYear(),
+                month: sunday.getMonth() + 1,
+                date: sunday.getDate(),
+                day: sunday.getDay(),
             };
         },
         calendarWeek() {
